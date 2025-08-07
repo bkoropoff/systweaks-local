@@ -1,0 +1,12 @@
+[Unit]
+Description=Google Drive Mount
+
+[Service]
+Type=notify
+ExecStartPre=/bin/mkdir -p "%h/.cache/google-drive" "%h/Google Drive"
+ExecStart=/usr/bin/env rclone mount gdrive: "%h/Google Drive" --dir-cache-time 24h --vfs-cache-mode full --cache-dir "%h/.cache/google-drive"
+WorkingDirectory=%h
+Restart=always
+
+[Install]
+WantedBy=default.target

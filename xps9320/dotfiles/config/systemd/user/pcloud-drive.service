@@ -1,0 +1,12 @@
+[Unit]
+Description=pCloud Drive Mount
+
+[Service]
+Type=notify
+ExecStartPre=/bin/mkdir -p "%h/.cache/pcloud-drive" "%h/pCloudDrive"
+ExecStart=/usr/bin/env rclone mount pcloud: "%h/pCloudDrive" --vfs-cache-mode full --cache-dir "%h/.cache/pcloud-drive"
+WorkingDirectory=%h
+Restart=always
+
+[Install]
+WantedBy=default.target
