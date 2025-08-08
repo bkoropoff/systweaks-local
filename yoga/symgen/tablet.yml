@@ -1,0 +1,6 @@
+prefix: $confighome/systemd/user/plasma-workspace.target.wants
+  path: ${XDG_DATA_HOME}/systemd/user
+  do:
+  - clean
+  - path: tablet-switch.service
+    do: symlink
