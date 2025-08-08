@@ -1,0 +1,8 @@
+prefix: $confighome/systemd/user/default.target.wants
+path: ${XDG_DATA_HOME}/systemd/user
+do:
+- clean
+- path:
+  - google-drive.service
+  - pcloud-drive.service
+  do: symlink
